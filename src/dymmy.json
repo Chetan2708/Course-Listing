@@ -1,6 +1,7 @@
 {
     "courses": [
       {
+        "id": 1,
         "courseName": "Introduction to Programming",
         "instructorName": "John Doe",
         "description": "Learn the basics of programming using a popular programming language.",
@@ -15,6 +16,7 @@
         ]
       },
       {
+        "id": 2,
         "courseName": "Web Development Fundamentals",
         "instructorName": "Jane Smith",
         "description": "Explore the fundamentals of web development and build your first website.",
@@ -29,6 +31,7 @@
         ]
       },
       {
+        "id": 3,
         "courseName": "Data Science for Beginners",
         "instructorName": "Alice Johnson",
         "description": "Dive into the world of data science and learn essential skills for analysis.",
@@ -43,6 +46,7 @@
         ]
       },
       {
+        "id": 4,
         "courseName": "Mobile App Development with React Native",
         "instructorName": "Chris Miller",
         "description": "Build cross-platform mobile applications using React Native.",
@@ -57,6 +61,7 @@
         ]
       },
       {
+        "id": 5,
         "courseName": "Graphic Design Fundamentals",
         "instructorName": "Eva Rodriguez",
         "description": "Learn the principles of graphic design and create stunning visuals.",
@@ -71,6 +76,7 @@
         ]
       },
       {
+        "id": 6,
         "courseName": "Machine Learning Essentials",
         "instructorName": "David Chen",
         "description": "Explore the fundamentals of machine learning and build predictive models.",
@@ -85,6 +91,7 @@
         ]
       },
       {
+        "id": 7,
         "courseName": "Digital Marketing Strategies",
         "instructorName": "Emily Davis",
         "description": "Learn effective digital marketing strategies to promote businesses online.",
@@ -99,6 +106,7 @@
         ]
       },
       {
+        "id": 8,
         "courseName": "Photography Basics",
         "instructorName": "Greg Taylor",
         "description": "Master the basics of photography and capture stunning images.",
@@ -113,6 +121,7 @@
         ]
       },
       {
+        "id": 9,
         "courseName": "Cybersecurity Fundamentals",
         "instructorName": "Michael Turner",
         "description": "Learn the basics of cybersecurity and protect against common threats.",
@@ -127,6 +136,7 @@
         ]
       },
       {
+        "id": 10,
         "courseName": "English Writing Workshop",
         "instructorName": "Sophie Anderson",
         "description": "Improve your English writing skills through interactive workshops.",
@@ -140,78 +150,83 @@
           { "week": 2, "topic": "Creative Writing", "subtopics": ["Storytelling Techniques", "Character Development"] }
         ]
       },
-
+      {
+        "id": 11,
+        "courseName": "Advanced Data Structures",
+        "instructorName": "Dr. Amanda Carter",
+        "description": "Explore advanced data structures and their applications in software development.",
+        "enrollmentStatus": "Open",
+        "courseDuration": "12 weeks",
+        "schedule": "Wednesdays and Fridays, 5:30 PM - 7:30 PM",
+        "location": "Virtual Classroom",
+        "prerequisites": ["Data Structures Basics", "Programming experience"],
+        "syllabus": [
+          { "week": 1, "topic": "Trees and Graphs", "subtopics": ["Binary Trees", "Graph Representation"] },
+          { "week": 2, "topic": "Dynamic Programming", "subtopics": ["Optimal Substructure", "Overlapping Subproblems"] }
+        ]
+      },
+      {
+        "id": 12,
+        "courseName": "Digital Art and Design",
+        "instructorName": "Isabel Martinez",
+        "description": "Learn digital art creation and design principles using industry-standard tools.",
+        "enrollmentStatus": "Open",
+        "courseDuration": "8 weeks",
+        "schedule": "Thursdays, 4:00 PM - 6:00 PM",
+        "location": "In-person: Art Studio",
+        "prerequisites": ["Basic knowledge of graphic design"],
+        "syllabus": [
+          { "week": 1, "topic": "Introduction to Digital Art", "subtopics": ["Digital Brushes", "Layers"] },
+          { "week": 2, "topic": "Character Design", "subtopics": ["Anatomy", "Expression"] }
+        ]
+      },
+      {
+        "id": 13,
+        "courseName": "Business Analytics",
+        "instructorName": "Professor Michael Johnson",
+        "description": "Analyze business data to make informed decisions and drive organizational success.",
+        "enrollmentStatus": "Closed",
+        "courseDuration": "10 weeks",
+        "schedule": "Mondays and Wednesdays, 7:00 PM - 9:00 PM",
+        "location": "Online",
+        "prerequisites": ["Basic knowledge of statistics", "Excel skills"],
+        "syllabus": [
+          { "week": 1, "topic": "Descriptive Analytics", "subtopics": ["Data Visualization", "Summary Statistics"] },
+          { "week": 2, "topic": "Predictive Analytics", "subtopics": ["Regression Analysis", "Forecasting"] }
+        ]
+      },
+      {
+        "id": 14,
+        "courseName": "Android App Development",
+        "instructorName": "Kevin Turner",
+        "description": "Build Android applications from scratch and publish them on the Google Play Store.",
+        "enrollmentStatus": "In Progress",
+        "courseDuration": "12 weeks",
+        "schedule": "Saturdays, 10:00 AM - 12:00 PM",
+        "location": "Virtual Classroom",
+        "prerequisites": ["Java programming", "XML basics"],
+        "syllabus": [
+          { "week": 1, "topic": "Introduction to Android Studio", "subtopics": ["User Interface", "Activities"] },
+          { "week": 2, "topic": "Working with Data", "subtopics": ["SQLite Database", "Content Providers"] }
+        ]
+      },
+      {
+        "id": 15,
+        "courseName": "Entrepreneurship 101",
+        "instructorName": "Sarah Lewis",
+        "description": "Explore the principles of entrepreneurship and develop a business mindset.",
+        "enrollmentStatus": "Open",
+        "courseDuration": "8 weeks",
+        "schedule": "Tuesdays, 6:30 PM - 8:30 PM",
+        "location": "In-person: Entrepreneurship Center",
+        "prerequisites": ["None"],
+        "syllabus": [
+          { "week": 1, "topic": "Idea Generation", "subtopics": ["Identifying Opportunities", "Problem-Solving"] },
+          { "week": 2, "topic": "Business Planning", "subtopics": ["Market Research", "Financial Projections"] }
+        ]
+      },
     {
-      "courseName": "Advanced Data Structures",
-      "instructorName": "Dr. Amanda Carter",
-      "description": "Explore advanced data structures and their applications in software development.",
-      "enrollmentStatus": "Open",
-      "courseDuration": "12 weeks",
-      "schedule": "Wednesdays and Fridays, 5:30 PM - 7:30 PM",
-      "location": "Virtual Classroom",
-      "prerequisites": ["Data Structures Basics", "Programming experience"],
-      "syllabus": [
-        { "week": 1, "topic": "Trees and Graphs", "subtopics": ["Binary Trees", "Graph Representation"] },
-        { "week": 2, "topic": "Dynamic Programming", "subtopics": ["Optimal Substructure", "Overlapping Subproblems"] }
-      ]
-    },
-    {
-      "courseName": "Digital Art and Design",
-      "instructorName": "Isabel Martinez",
-      "description": "Learn digital art creation and design principles using industry-standard tools.",
-      "enrollmentStatus": "Open",
-      "courseDuration": "8 weeks",
-      "schedule": "Thursdays, 4:00 PM - 6:00 PM",
-      "location": "In-person: Art Studio",
-      "prerequisites": ["Basic knowledge of graphic design"],
-      "syllabus": [
-        { "week": 1, "topic": "Introduction to Digital Art", "subtopics": ["Digital Brushes", "Layers"] },
-        { "week": 2, "topic": "Character Design", "subtopics": ["Anatomy", "Expression"] }
-      ]
-    },
-    {
-      "courseName": "Business Analytics",
-      "instructorName": "Professor Michael Johnson",
-      "description": "Analyze business data to make informed decisions and drive organizational success.",
-      "enrollmentStatus": "Closed",
-      "courseDuration": "10 weeks",
-      "schedule": "Mondays and Wednesdays, 7:00 PM - 9:00 PM",
-      "location": "Online",
-      "prerequisites": ["Basic knowledge of statistics", "Excel skills"],
-      "syllabus": [
-        { "week": 1, "topic": "Descriptive Analytics", "subtopics": ["Data Visualization", "Summary Statistics"] },
-        { "week": 2, "topic": "Predictive Analytics", "subtopics": ["Regression Analysis", "Forecasting"] }
-      ]
-    },
-    {
-      "courseName": "Android App Development",
-      "instructorName": "Kevin Turner",
-      "description": "Build Android applications from scratch and publish them on the Google Play Store.",
-      "enrollmentStatus": "In Progress",
-      "courseDuration": "12 weeks",
-      "schedule": "Saturdays, 10:00 AM - 12:00 PM",
-      "location": "Virtual Classroom",
-      "prerequisites": ["Java programming", "XML basics"],
-      "syllabus": [
-        { "week": 1, "topic": "Introduction to Android Studio", "subtopics": ["User Interface", "Activities"] },
-        { "week": 2, "topic": "Working with Data", "subtopics": ["SQLite Database", "Content Providers"] }
-      ]
-    },
-    {
-      "courseName": "Entrepreneurship 101",
-      "instructorName": "Sarah Lewis",
-      "description": "Explore the principles of entrepreneurship and develop a business mindset.",
-      "enrollmentStatus": "Open",
-      "courseDuration": "8 weeks",
-      "schedule": "Tuesdays, 6:30 PM - 8:30 PM",
-      "location": "In-person: Entrepreneurship Center",
-      "prerequisites": ["None"],
-      "syllabus": [
-        { "week": 1, "topic": "Idea Generation", "subtopics": ["Identifying Opportunities", "Problem-Solving"] },
-        { "week": 2, "topic": "Business Planning", "subtopics": ["Market Research", "Financial Projections"] }
-      ]
-    },
-    {
+        "id": 16,
       "courseName": "Spanish Language Basics",
       "instructorName": "Luis Hernandez",
       "description": "Learn the basics of the Spanish language for everyday communication.",
@@ -226,6 +241,7 @@
       ]
     },
     {
+        "id": 17,
       "courseName": "Game Development with Unity",
       "instructorName": "Alex Mitchell",
       "description": "Create interactive games using the Unity game development engine.",
@@ -240,6 +256,7 @@
       ]
     },
     {
+        "id": 18,
       "courseName": "Artificial Intelligence Fundamentals",
       "instructorName": "Dr. Samantha White",
       "description": "Explore the fundamentals of artificial intelligence and its applications.",
@@ -254,6 +271,7 @@
       ]
     },
     {
+        "id": 19,
       "courseName": "UX/UI Design Principles",
       "instructorName": "Melissa Turner",
       "description": "Learn the principles of user experience (UX) and user interface (UI) design.",
@@ -266,7 +284,22 @@
         { "week": 1, "topic": "User Research", "subtopics": ["Persona Creation", "User Interviews"] },
         { "week": 2, "topic": "Wireframing and Prototyping", "subtopics": ["Tools and Techniques", "Interactive Prototypes"] }
       ]
-    }
+    },
+    {
+        "id": 20,
+        "courseName": "Python Web Development",
+        "instructorName": "Alexandra Davis",
+        "description": "Build web applications using Python and popular web frameworks.",
+        "enrollmentStatus": "Open",
+        "courseDuration": "8 weeks",
+        "schedule": "Tuesdays and Thursdays, 6:30 PM - 8:30 PM",
+        "location": "Virtual Classroom",
+        "prerequisites": ["Basic Python knowledge"],
+        "syllabus": [
+          { "week": 1, "topic": "Introduction to Flask", "subtopics": ["Setting Up a Flask Project", "Routing"] },
+          { "week": 2, "topic": "Database Integration", "subtopics": ["SQLite Database with Flask", "ORM - SQLAlchemy"] }
+        ]
+      }
   ]
 }
   

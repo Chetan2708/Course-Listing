@@ -12,14 +12,20 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
-import ProfileModal from './ProfileModal';
 import logoImage from '../assets/img.jpg'
 const pages = ['Courses'];
 const settings = ['Profile', 'Dashboard', 'Logout'];
-
+import { setCourses } from '../features/inputSlice';
+import { get, ref } from 'firebase/database';
+import { dbRealtime } from '../firbase';
+import { useDispatch} from 'react-redux';
+import { useEffect } from 'react';
+import ProfileBox from '../misc/ProfileBox'
+import { useState } from 'react';
 function ResponsiveAppBar() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] =useState(null);
+    const [anchorElUser, setAnchorElUser] =useState(null);
+    const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
     const navigate = useNavigate()
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -46,7 +52,7 @@ function ResponsiveAppBar() {
     };
     const handleSettings = (setting) => {
         if (setting === 'Profile') {
-            <ProfileModal />
+            setIsProfileModalOpen(true);
             handleCloseUserMenu()
         }
         else if (setting === 'Dashboard') {
@@ -59,6 +65,34 @@ function ResponsiveAppBar() {
             handleCloseUserMenu()
         }
     }
+    const handleCloseProfileModal = () => {
+        setIsProfileModalOpen(false);
+    };
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const coursesRef = ref(dbRealtime, 'courses');
+                const snapshot = await get(coursesRef);
+                const coursesData = snapshot.val();
+                console.log('Courses Data:', coursesData);
+
+                if (Array.isArray(coursesData)) {
+                    dispatch(setCourses(coursesData));
+                } else {
+                    console.error('Invalid courses data:', coursesData);
+                    dispatch(setCourses([]));
+                }
+            } catch (error) {
+                console.error('Error fetching data from Firebase:', error);
+                dispatch(setCourses([]));
+            }
+        };
+
+        fetchData();
+    }, []);
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -188,6 +222,9 @@ function ResponsiveAppBar() {
                     </Box>
                 </Toolbar>
             </Container>
+            {isProfileModalOpen && (
+                <ProfileBox onClose={handleCloseProfileModal} />
+            )}
         </AppBar>
     );
 }
