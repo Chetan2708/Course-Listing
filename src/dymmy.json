@@ -13,7 +13,8 @@
         "syllabus": [
           { "week": 1, "topic": "Introduction to Programming Concepts", "subtopics": ["Variables", "Data Types", "Control Flow"] },
           { "week": 2, "topic": "Functions and Procedures", "subtopics": ["Function Declaration", "Parameters", "Return Values"] }
-        ]
+        ],
+        "thumbnail":"https://res.cloudinary.com/dq87rxvyn/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1705649706/hqdefault_jixlqu.jpg"
       },
       {
         "id": 2,
@@ -28,7 +29,8 @@
         "syllabus": [
           { "week": 1, "topic": "HTML Basics", "subtopics": ["HTML Structure", "Tags and Elements", "Semantic HTML"] },
           { "week": 2, "topic": "CSS Styling", "subtopics": ["Selectors", "Box Model", "Flexbox"] }
-        ]
+        ],
+        "thumbnail":"https://res.cloudinary.com/dq87rxvyn/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1705649683/maxresdefault_tagjmv.jpg"
       },
       {
         "id": 3,
@@ -43,7 +45,8 @@
         "syllabus": [
           { "week": 1, "topic": "Introduction to Data Science", "subtopics": ["Data Exploration", "Data Cleaning"] },
           { "week": 2, "topic": "Statistical Analysis", "subtopics": ["Descriptive Statistics", "Inferential Statistics"] }
-        ]
+        ],
+        "thumbnail":"https://res.cloudinary.com/dq87rxvyn/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1705649848/maxresdefault_k2aldx.jpg"
       },
       {
         "id": 4,
@@ -58,7 +61,8 @@
         "syllabus": [
           { "week": 1, "topic": "Introduction to React Native", "subtopics": ["Setting Up Environment", "Basic Components"] },
           { "week": 2, "topic": "Navigation and State Management", "subtopics": ["React Navigation", "State and Props"] }
-        ]
+        ],
+        "thumbnail":"https://res.cloudinary.com/dq87rxvyn/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1705649737/Reasons-Why-Use-React-Native-for-Mobile-App-Development_kzkcys.png"
       },
       {
         "id": 5,
@@ -73,7 +77,8 @@
         "syllabus": [
           { "week": 1, "topic": "Design Principles", "subtopics": ["Color Theory", "Typography"] },
           { "week": 2, "topic": "Adobe Illustrator Basics", "subtopics": ["Tools and Interface", "Creating Shapes"] }
-        ]
+        ],
+        "thumbnail":"https://res.cloudinary.com/dq87rxvyn/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1705650402/61EYCRviuAL._AC_UF1000_1000_QL80__lsb1xp.jpg"
       },
       {
         "id": 6,
@@ -88,8 +93,10 @@
         "syllabus": [
           { "week": 1, "topic": "Introduction to Machine Learning", "subtopics": ["Supervised Learning", "Unsupervised Learning"] },
           { "week": 2, "topic": "Linear Regression", "subtopics": ["Simple Linear Regression", "Multiple Linear Regression"] }
-        ]
+        ] ,
+        "thumbnail":"https://res.cloudinary.com/dq87rxvyn/image/upload/w_1000,ar_16:9,c_fill,g_auto,e_sharpen/v1705649127/machine-learning-in-healthcare_be606p.jpg"
       },
+
       {
         "id": 7,
         "courseName": "Digital Marketing Strategies",

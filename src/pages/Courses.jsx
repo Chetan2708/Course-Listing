@@ -20,7 +20,7 @@ const Courses = () => {
     }
 
     const handleView = (id) => {
-        console.log(id)
+        
         navigate(`/courses/view/${id}`);
       };
     return (
@@ -31,7 +31,6 @@ const Courses = () => {
                     <Grid item xs={12} sm={6} md={4} lg={3} key={index} padding={'15px'} className='gridItem'>
                         <Card>
                         <CardActionArea >
-
                             <CardContent>
                                 <Typography variant="h6" component="div">
                                     {courseItem.courseName}
