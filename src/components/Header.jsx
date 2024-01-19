@@ -15,17 +15,21 @@ import { useNavigate } from 'react-router-dom';
 import logoImage from '../assets/img.jpg'
 const pages = ['Courses'];
 const settings = ['Profile', 'Dashboard', 'Logout'];
-import { setCourses } from '../features/inputSlice';
+import { setCourses, setUser } from '../features/inputSlice';
 import { get, ref } from 'firebase/database';
-import { dbRealtime } from '../firbase';
-import { useDispatch} from 'react-redux';
-import { useEffect } from 'react';
+import { auth, dbRealtime } from '../firbase';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';  
 import ProfileBox from '../misc/ProfileBox'
 import { useState } from 'react';
+import AuthModal from './Authentication/AuthModal';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
 function ResponsiveAppBar() {
-    const [anchorElNav, setAnchorElNav] =useState(null);
-    const [anchorElUser, setAnchorElUser] =useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
     const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
+    const userData = useSelector((state) => state.user)
+    {console.log(userData)}
     const navigate = useNavigate()
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -76,7 +80,7 @@ function ResponsiveAppBar() {
                 const coursesRef = ref(dbRealtime, 'courses');
                 const snapshot = await get(coursesRef);
                 const coursesData = snapshot.val();
-                console.log('Courses Data:', coursesData);
+
 
                 if (Array.isArray(coursesData)) {
                     dispatch(setCourses(coursesData));
@@ -92,7 +96,20 @@ function ResponsiveAppBar() {
 
         fetchData();
     }, []);
-
+    useEffect(() => {
+        onAuthStateChanged(auth, user => {
+            if (user) {
+                dispatch(setUser(user))
+            }
+            else{
+                dispatch(setUser(null))
+            }
+    }) 
+    }, [])
+    const handleLogout =()=>{
+        console.log('loggedOut')
+        signOut(auth)
+    }
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -117,7 +134,7 @@ function ResponsiveAppBar() {
                         <img
                             src={logoImage}
                             alt="Logo"
-                            style={{ width: '80px', height: '80px', borderRadius: '50%' , margin:'10px' }}
+                            style={{ width: '80px', height: '80px', borderRadius: '50%', margin: '10px' }}
                         />
 
                     </Typography>
@@ -176,7 +193,7 @@ function ResponsiveAppBar() {
                         <img
                             src={logoImage}
                             alt="Logo"
-                            style={{ width: '80px', height: '80px', borderRadius: '50%'  , margin:'20px'}}
+                            style={{ width: '80px', height: '80px', borderRadius: '50%', margin: '20px' }}
                         />
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
@@ -191,7 +208,7 @@ function ResponsiveAppBar() {
                         ))}
                     </Box>
 
-                    <Box sx={{ flexGrow: 0 }}>
+                    <Box sx={{ display: 'flex' }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="" src="/static/images/avatar/2.jpg" />
@@ -219,6 +236,9 @@ function ResponsiveAppBar() {
                                 </MenuItem>
                             ))}
                         </Menu>
+                        <div className='LoginHandler'>
+                        {userData ? <Button sx={{color:'black'}} onClick={handleLogout}>Logout</Button> : <AuthModal />}
+                        </div>
                     </Box>
                 </Toolbar>
             </Container>

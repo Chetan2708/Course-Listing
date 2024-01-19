@@ -37,6 +37,7 @@ margin: 30px;
   width: 240px;
   height: 135px;
   margin-left: 70%;
+  text-align: center;
 }
 
 img {
@@ -57,41 +58,58 @@ img {
 
 @media screen and (max-width: 800px) {
   .courseView {
-    height: 100vh;
+    height: 130vh;
     flex-direction: column;
   }
-
+  
   .courseViewcontainer {
     align-items: center;
     margin-right: 0;
     bottom: 30px;
     text-align: center;
   }
-
+  
   .thumbnail {
     order: -1;
     margin-left: 0%;
-    margin-top: 20px; 
+    margin-top: 5rem; 
     width: 100%;
     height: auto;
   }
 }
 
-
+@media screen and (max-width: 700px)  {
+  .courseView {
+    height: 100vh;
+  }
+  .thumbnail {
+    
+    margin-top: 5px; 
+   
+  }
+  
+}
+@media screen and (max-height: 700px) {
+  .courseView {
+    height: 120vh;
+  }
+  .thumbnail {
+    margin-top: 5px; 
+  }
+  
+}
+.LoginHandler{
+  margin-left: 2rem; 
+  
+}
 #desc{
   margin-top: 20px;
 }
 #ins_Name{
   margin-top: 20px;
-  font-size: 18px;
+  
 }
-#duration{
-  font-size: 18px;
-}
-#location{
-  font-size: 18px;
-}
-#prerequisites{
+.content{
   font-size: 18px;
 }
 

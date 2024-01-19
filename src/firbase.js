@@ -1,10 +1,10 @@
-import { initializeApp } from "firebase/app";
-import { getDatabase} from "firebase/database";
-import "firebase/compat/database"; // Import the database module
-import firebaseConfig from "./config/firebaseConfig";
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+import { getDatabase } from 'firebase/database';
+import firebaseConfig from './config/firebaseConfig';
 
-const firebaseApp = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const dbRealtime = getDatabase(app);
 
-const dbRealtime = getDatabase(firebaseApp); // Initialize the Realtime Database reference
-
-export { dbRealtime };
+export { auth, dbRealtime };
