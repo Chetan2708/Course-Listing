@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import { Grid, Card, CardContent, Typography, Box, CircularProgress, Button, CardActionArea } from '@mui/material';
+import { Grid, Card, CardContent, Typography, Box, CircularProgress, Button, CardActionArea, Avatar } from '@mui/material';
 
 import { useNavigate } from 'react-router-dom';
 const Courses = () => {
@@ -32,9 +32,12 @@ const Courses = () => {
                         <Card>
                         <CardActionArea >
                             <CardContent>
+                                <div  style={{width:'100%'}}>
+                                <Avatar  sx={{float:'right'}}alt="" src= {courseItem.thumbnail}  />
                                 <Typography variant="h6" component="div">
                                     {courseItem.courseName}
                                 </Typography>
+                                </div>
                                 <Typography color="textSecondary" gutterBottom>
                                     {courseItem.instructorName}
                                 </Typography>

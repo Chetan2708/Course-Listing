@@ -4,8 +4,11 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Avatar from '@mui/material/Avatar';
+import { useSelector } from 'react-redux';
 
 const ProfileBox = ({ onClose }) => {
+    const user = useSelector((state) => state.user);
+
     return (
         <Modal
             open={true} // You can control the visibility of the modal using a state
@@ -15,6 +18,10 @@ const ProfileBox = ({ onClose }) => {
         >
             <Box
                 sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    justifyContent: 'center',
                     position: 'absolute',
                     top: '50%',
                     left: '50%',
@@ -29,14 +36,14 @@ const ProfileBox = ({ onClose }) => {
             >
                 <Avatar
                     alt="User Avatar"
-                    src="/static/images/avatar/2.jpg"
+                    src={user.photoURL}
                     sx={{ width: 80, height: 80, marginBottom: 2 }}
                 />
                 <Typography variant="h6" gutterBottom>
-                    John Doe
+                    {user.displayName}
                 </Typography>
                 <Typography variant="subtitle1" color="textSecondary" paragraph>
-                    Email: john.doe@example.com
+                    {user.email}
                 </Typography>
                 <Button variant="contained" color="primary" onClick={onClose}>
                     Close
@@ -44,6 +51,7 @@ const ProfileBox = ({ onClose }) => {
             </Box>
         </Modal>
     );
-}
+};
 
 export default ProfileBox;
+

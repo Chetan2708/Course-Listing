@@ -9,7 +9,11 @@ import { AppBar, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
 import Login from './Login';
 import Signup from './Signup';
-
+import GoogleButton from "react-google-button";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { setAlert } from '../../features/inputSlice';
+import { useDispatch } from 'react-redux';
+import { auth } from '../../firbase';
 const style = {
   position: 'absolute',
   top: '50%',
@@ -29,11 +33,33 @@ export default function AuthModal() {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [value, setValue] = useState(0);
-
+  const dispatch = useDispatch()
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-  
+  const googleProvider = new GoogleAuthProvider();
+
+
+  const signInWithGoogle = () => {
+    signInWithPopup(auth, googleProvider)
+      .then((res) => {
+        dispatch(setAlert({
+          open: true,
+          message: `Sign Up Successful. Welcome ${res.user.email}`,
+          type: "success",
+        }))
+
+        handleClose();
+      })
+      .catch((error) => {
+        dispatch(setAlert({
+          open: true,
+          message: error.message,
+          type: "error",
+        }))
+        return;
+      });
+  };
   return (
     <div>
       <Button sx={{color :"black"}} onClick={handleOpen}  variant="contained"
@@ -65,6 +91,13 @@ export default function AuthModal() {
       </Box>
             {value===0 && <Login handleClose={handleClose}/>}
             {value===1 && <Signup handleClose={handleClose}/>}
+            <Box className='google'>
+              <span style={{marginBottom:'5px'}}>OR</span>
+              <GoogleButton
+                style={{ width: "100%", outline: "none" }}
+                onClick={signInWithGoogle}
+              />
+            </Box>
           </Box>
         </Fade>
       </Modal>

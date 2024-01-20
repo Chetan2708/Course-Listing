@@ -2,21 +2,40 @@ import { Box, Button, TextField } from '@mui/material';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import React, { useState } from 'react'
 import { auth } from '../../firbase';
+import { setAlert } from '../../features/inputSlice';
+import { useDispatch } from 'react-redux';
 
 const Login = ({ handleClose }) => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const dispatch = useDispatch()
+
     const handleSubmit = async () => {
         if (!password ||!email) {
-            console.log('error')
+        dispatch(  setAlert({
+            open: true,
+            message: "Please fill all the Fields",
+            type: "error",
+          }))
           return;
         }
           try {
             const result = await signInWithEmailAndPassword(auth , email , password)
            
-            handleClose()
+           dispatch( setAlert({
+              open: true,
+              message: `Sign Up Successful. Welcome ${result.user.email}`,
+              type: "success",
+            }))
+      
+            handleClose();
           } catch (error) {
-                console.log(error)
+           dispatch( setAlert({
+              open: true,
+              message: error.message,
+              type: "error",
+            }))
+            return;
           }
       
     }

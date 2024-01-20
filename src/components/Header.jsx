@@ -24,12 +24,13 @@ import ProfileBox from '../misc/ProfileBox'
 import { useState } from 'react';
 import AuthModal from './Authentication/AuthModal';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
+import Swal from 'sweetalert2';
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
     const userData = useSelector((state) => state.user)
-    {console.log(userData)}
+ 
     const navigate = useNavigate()
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -107,8 +108,24 @@ function ResponsiveAppBar() {
     }) 
     }, [])
     const handleLogout =()=>{
-        console.log('loggedOut')
-        signOut(auth)
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Do you want to logout?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes"
+          }).then((result) => {
+            if (result.isConfirmed) {
+                signOut(auth)
+              Swal.fire({
+                title: "Logged Out!",
+                text: "You are logged out!",
+                icon: "success"
+              });
+            }
+          });
     }
     return (
         <AppBar position="static">
@@ -208,10 +225,10 @@ function ResponsiveAppBar() {
                         ))}
                     </Box>
 
-                    <Box sx={{ display: 'flex' }}>
+                    {userData?<Box sx={{ display: 'flex' }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                                <Avatar alt="" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt="" src= {userData? userData.photoURL : "/static/images/avatar/2.jpg"}  />
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -237,9 +254,9 @@ function ResponsiveAppBar() {
                             ))}
                         </Menu>
                         <div className='LoginHandler'>
-                        {userData ? <Button sx={{color:'black'}} onClick={handleLogout}>Logout</Button> : <AuthModal />}
+                        <Button sx={{color:'black' , backgroundColor: "#EEBC1D"}} onClick={handleLogout}>Logout</Button> 
                         </div>
-                    </Box>
+                    </Box> : <AuthModal />}
                 </Toolbar>
             </Container>
             {isProfileModalOpen && (
