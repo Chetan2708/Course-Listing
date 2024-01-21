@@ -14,10 +14,10 @@ import MenuItem from '@mui/material/MenuItem';
 import { useNavigate } from 'react-router-dom';
 import logoImage from '../assets/img.jpg'
 const pages = ['Courses'];
-const settings = ['Profile', 'Dashboard', 'Logout'];
-import { setCourses, setUser } from '../features/inputSlice';
+const settings = ['Profile', 'Dashboard'];
+import { resetEnrolled, setCourses, setEnrolled, setUser } from '../features/inputSlice';
 import { get, ref } from 'firebase/database';
-import { auth, dbRealtime } from '../firbase';
+import { auth, db, dbRealtime } from '../firbase';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';  
 import ProfileBox from '../misc/ProfileBox'
@@ -25,11 +25,13 @@ import { useState } from 'react';
 import AuthModal from './Authentication/AuthModal';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import Swal from 'sweetalert2';
+import { doc, onSnapshot } from 'firebase/firestore';
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
     const [isProfileModalOpen, setIsProfileModalOpen] = useState(false);
     const userData = useSelector((state) => state.user)
+    
  
     const navigate = useNavigate()
     const handleOpenNavMenu = (event) => {
@@ -60,15 +62,12 @@ function ResponsiveAppBar() {
             setIsProfileModalOpen(true);
             handleCloseUserMenu()
         }
-        else if (setting === 'Dashboard') {
+        else if(setting === 'Dashboard') {
 
             navigate("/dashboard");
             handleCloseUserMenu()
         }
-        else {
-            console.log('logout')
-            handleCloseUserMenu()
-        }
+    
     }
     const handleCloseProfileModal = () => {
         setIsProfileModalOpen(false);
@@ -95,8 +94,27 @@ function ResponsiveAppBar() {
             }
         };
 
-        fetchData();
+        fetchData();    
     }, []);
+
+    useEffect(()=>{
+        if (userData){
+            const courseRef = doc(db , 'enrolled' , userData.uid )
+
+            var unsubscribe = onSnapshot(courseRef, (course) => {
+                if (course.exists()) {
+                    dispatch(setEnrolled(course.data().courses ))
+                } else {    
+                  console.log("No enrolled Course");
+                  dispatch(resetEnrolled()) 
+                }
+              });
+              return ()=>{
+                      unsubscribe()
+              }
+        }
+    },[userData])
+
     useEffect(() => {
         onAuthStateChanged(auth, user => {
             if (user) {
@@ -118,6 +136,7 @@ function ResponsiveAppBar() {
             confirmButtonText: "Yes"
           }).then((result) => {
             if (result.isConfirmed) {
+                // dispatch(resetEnrolled())
                 signOut(auth)
               Swal.fire({
                 title: "Logged Out!",

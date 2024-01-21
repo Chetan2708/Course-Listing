@@ -8,6 +8,7 @@ const initialState = {
     message: "",
     type: "",
   },
+  enrolled:[],
 };
 const inputSlice = createSlice({
   name: 'CourseData',
@@ -21,9 +22,24 @@ const inputSlice = createSlice({
     },
     setAlert: (state, action) => {
       state.alert = action.payload
-    }
+    },
+    setEnrolled: (state, action) => {
+      state.enrolled = action.payload
+    },
+    resetEnrolled: (state) => {
+      state.enrolled = [];
+    },
+   
+    markCourseAsCompleted: (state, action) => {
+      const courseId = action.payload;
+      const courseIndex = state.courses.findIndex(course => course.id === courseId);
+      
+      if (courseIndex !== -1) {
+        state.courses[courseIndex].completed = 'Completed';
+      }
+    },
   },
 });
 
-export const { setCourses, setUser , setAlert } = inputSlice.actions;
+export const { setCourses, setUser , setAlert , setEnrolled , resetEnrolled  ,markCourseAsCompleted} = inputSlice.actions;
 export default inputSlice.reducer;

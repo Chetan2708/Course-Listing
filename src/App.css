@@ -40,6 +40,29 @@ margin: 30px;
   text-align: center;
 }
 
+
+
+
+.enrolledCoursesHeader{
+  width: 100%;
+  background-color: #2D2F31;
+  height: 20vh;
+  text-align: center;
+  padding-top: 50px;
+  color: white;
+  font-size: 30px;
+}
+
+
+.enrolledAllCourses{
+  height: 50vh;
+  
+  width: calc(60%); 
+  margin: 0 20%;                                        
+}
+
+
+
 img {
   height: 100%;
   width: 100%;
